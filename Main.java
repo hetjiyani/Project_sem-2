@@ -68,7 +68,7 @@ public class Main {
                     String sql1 = "SELECT user_id FROM users WHERE email = ?";
 
                     PreparedStatement pst2 = con.prepareStatement(sql1);
-                    pst2.setString(1, "email");
+                    pst2.setString(1, loginEmail);
 
                     ResultSet rs1 = pst2.executeQuery();
 
