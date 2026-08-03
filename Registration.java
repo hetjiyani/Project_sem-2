@@ -1,5 +1,3 @@
-package pro1;
-
 import java.sql.*;
 import java.util.Scanner;
 
@@ -154,8 +152,6 @@ public class Registration {
             registerPs.executeUpdate();
 
             if (status.equals("Registered")) {
-                mail_for_joining m = new mail_for_joining();
-                m.mail_join(userId, hackathonId);
                 System.out.println("Hackathon Registration Successful!");
             } else {
                 System.out.println("Hackathon Full!");
