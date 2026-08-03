@@ -1,15 +1,10 @@
-package pro1;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Main {
 
 
-    public  void main_user() throws Exception {
+    public static void main(String[] args) throws Exception {
         Connection con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/hackthone",
                 "root",
@@ -68,12 +63,14 @@ public class Main {
                     String sql1 = "SELECT user_id FROM users WHERE email = ?";
 
                     PreparedStatement pst2 = con.prepareStatement(sql1);
-                    pst2.setString(1, loginEmail);
+                    pst2.setString(1, "email");
 
                     ResultSet rs1 = pst2.executeQuery();
 
                     if (rs1.next()) {
                         userId = rs1.getInt("user_id");
+                    } else {
+                        System.out.println("User not found!");
                     }
                     //--------------------------------------------------------------------------
                     if (user.loginUser(loginEmail,loginPassword)) {
@@ -110,7 +107,7 @@ public class Main {
                                         System.out.print("Enter Choice: ");
 
                                         profileChoice = sc.nextInt();
-//                                        sc.nextLine();
+                                        sc.nextLine();
 
                                         switch (profileChoice) {
 
@@ -330,6 +327,6 @@ public class Main {
 
         } while (choice != 3);
 
-//        sc.close();
+        sc.close();
     }
 }
